@@ -1,15 +1,12 @@
 <script>
  import SongColumn from "./sub-component/Song-column.svelte";
  export let SongSource;
- console.log(SongSource);
 </script>
 
 <div class="song-bar">
-    <SongColumn songs={SongSource}/>
-    <SongColumn songs={SongSource}/>
-    <SongColumn songs={SongSource}/>
-    <SongColumn songs={SongSource}/>
-    <SongColumn songs={SongSource}/>
+    {#each SongSource as sources}
+      <SongColumn songs={sources.source}/>
+    {/each}
 </div>
 
 
