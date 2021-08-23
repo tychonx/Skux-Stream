@@ -1,5 +1,5 @@
 {
-  "name": "sezzer",
+  "name": "skux-stream",
   "version": "0.0.1",
   "scripts": {
     "dev": "svelte-kit dev",
@@ -9,14 +9,12 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "^1.0.0-next.0",
-    "@sveltejs/kit": "next",
-    "axios": "^0.21.1",
+    "@sveltejs/adapter-vercel": "^1.0.0-next.27",
+    "@sveltejs/kit": "^1.0.0-next.156",
     "flickity": "^2.2.2",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
     "svelte": "^3.34.0",
-    "svelte-carousel-flickity": "^2.0.2",
     "svelte-loading-spinners": "^0.1.7"
   },
   "type": "module",
