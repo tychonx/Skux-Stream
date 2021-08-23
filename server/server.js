@@ -20,7 +20,7 @@ const db = new Pool({
 const client = new Client({
     user : "postgres",
     password : "Tyfang@200615",
-    database  : "postgres",
+    database  : "postgres", 
     host : "localhost",
     port : 5432
 })
