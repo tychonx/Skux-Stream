@@ -14,6 +14,5 @@
   .song-column{
       display: flex;
       flex-direction: column;
-      margin-right: 15px;
   }
 </style>

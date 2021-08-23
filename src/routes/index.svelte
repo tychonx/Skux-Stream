@@ -2,29 +2,25 @@
 	import {onMount} from 'svelte'
 	import PlaylistBar from '../components/Playlist-bar.svelte';
 	import AlbumBar from '../components/Album-bar.svelte';
-	import SongBar from '../components/song-bar.svelte';
+	import {Plane} from 'svelte-loading-spinners'
 	import Nav from '../components/Nav.svelte';
 	import Border from '../components/border.svelte'
 	import Song from '../components/sub-component/song.svelte'
+    import Center from '../components/sub-component/center.svelte'
+	import { onDestroy } from "svelte";
 
+	let show = true;
 
-	onMount(
-	async()=>{
-			try {
-			let d = await (await fetch("http://localhost:5050/", {mode: "cors"})).text();
-			console.log(d);	
-			} catch (error) {
-				console.log(error.message);
-			}
+    setTimeout(async()=>{
+		show = false
+	}, 5000)
 
-		}		
-	) 
 	const playlistSources = [
 		{
 			image : 'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
 			name : 'Rucle',
 			id : 0
-
+			
 		},
 		{
 			image: 'https://www.dropbox.com/s/sj59b8a17fg0pmn/view-1.jpg?raw=1',
@@ -67,7 +63,7 @@
 			id: 9
 		}
 	];
-
+	
 	const albumSource = [
 		{
 			image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
@@ -81,7 +77,7 @@
 		},
 		{
 			image:
-				'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
+			'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
 			name: 'honey colors',
 			id: 2
 		},
@@ -91,157 +87,171 @@
 			id: 3
 		}
 	];
-
-const SongSources = [
-    {		
-	 source : [
-			{
-				image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
-				name: 'Art vs Science',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
-				name: 'The Moment',
-				author: 'KSI'
-			},
-			{
-				image:
+	
+	const SongSources = [
+		{		
+			source : [
+				{
+					image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
+					name: 'Art vs Science',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
+					name: 'The Moment',
+					author: 'KSI'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
-				name: 'Comfort Arc',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
+					name: 'Comfort Arc',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-	   ]
-   },
-   {		
-	 source : [
-			{
-				image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
-				name: 'Art vs Science',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
-				name: 'The Moment',
-				author: 'KSI'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+			]
+		},
+		{		
+			source : [
+				{
+					image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
+					name: 'Art vs Science',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
+					name: 'The Moment',
+					author: 'KSI'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
-				name: 'Comfort Arc',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
+					name: 'Comfort Arc',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-	   ]
-   },
-   {		
-	 source : [
-			{
-				image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
-				name: 'Art vs Science',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
-				name: 'The Moment',
-				author: 'KSI'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+			]
+		},
+		{		
+			source : [
+				{
+					image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
+					name: 'Art vs Science',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
+					name: 'The Moment',
+					author: 'KSI'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
-				name: 'Comfort Arc',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
+					name: 'Comfort Arc',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-	   ]
-   },    {		
-	 source : [
-			{
-				image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
-				name: 'Art vs Science',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
-				name: 'The Moment',
-				author: 'KSI'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+			]
+		},    {		
+			source : [
+				{
+					image: 'https://www.dropbox.com/s/fxsiqxmb8tupqzi/album-1.jpg?raw=1',
+					name: 'Art vs Science',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/vsx9llzz2kpy294/album-4.jpg?raw=1',
+					name: 'The Moment',
+					author: 'KSI'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
-				name: 'Comfort Arc',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image: 'https://www.dropbox.com/s/5etan463h9blf1c/album-2.jpg?raw=1',
+					name: 'Comfort Arc',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-			{
-				image:
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+				{
+					image:
 					'https://www.dropbox.com/s/ufh1hmrfiu4pp1s/album_cover_covers_header.original.jpg?raw=1',
-				name: 'honey colors',
-				author: 'Dillon Francis'
-			},
-	   ]
-   },
-   
-]  
+					name: 'honey colors',
+					author: 'Dillon Francis'
+				},
+			]
+		},
+		
+	]  
+	
+	onMount(
+	async()=>{
+		 document.getElementById("index").load()
+			try {
+			let d = await (await fetch("http://localhost:5050/", {mode: "cors"})).text();
+			console.log(d);	
+			} catch (error) {
+				console.log(error.message);
+			}
+	
+		}		
+	) 
+	
 </script>
 
 <svelte:head>
@@ -249,12 +259,32 @@ const SongSources = [
 </svelte:head>
 
 <main>
-	<Border>
-		<Nav />
-		<PlaylistBar title="Recommended playlist" playlistSource={playlistSources} />
-		<AlbumBar title="Albums" albums={albumSource} />
-		<PlaylistBar title="Recommended playlist" playlistSource={playlistSources} />
-		<Song song={SongSources[0].source[0]} />		
-	</Border>
+	{#if show}
+	<div class="overlay">
+		<Center>
+			<Plane size="100" unit="px" duration="3s" color="#FF005C"/>
+		</Center>
+		<h3 class="logo">Skux-Stream</h3>	
+		<center>
+			<h2 class="sub-heading">Tech premium</h2>
+		</center>	  
+			<footer class="footer">
+				<span>Copyright 2021, 2021 TyFangXV</span>
+			</footer>		
+	</div>
+	{/if}
+	
+	{#if !show}
+	<div id>
+		<Border>
+			<Nav />
+			<PlaylistBar title="Recommended playlist" playlistSource={playlistSources} />
+			<AlbumBar title="Albums" albums={albumSource} />
+			<PlaylistBar title="Recommended playlist" playlistSource={playlistSources} />	
+		</Border>				
+	</div>
+
+	{/if}	
+
 
 </main>

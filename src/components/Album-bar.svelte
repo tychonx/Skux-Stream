@@ -62,7 +62,7 @@
 
 	.album-bar .album-name {
 		text-align: left;
-		font-family: 'Rokkitt', serif;
+		font-family: var(--Ropa);
 		font-weight: lighter;
 		color: #ffffff83;
 	}

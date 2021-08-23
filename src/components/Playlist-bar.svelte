@@ -32,7 +32,7 @@
             </div>
             <img src={playlist.image} alt="view" class="playlist-thumbnail" />
             <span class="playlist-meta">
-                <p class="playlist-name">{playlist.name}</p>
+                <h1 class="playlist-name">{playlist.name}</h1>
                 <span class="material-icons">more_vert</span>
             </span>
         </div>
@@ -83,7 +83,7 @@
 	.playlist-bar .playlist-carousel-view .playlist-carousel-control-next{
         position: absolute;
         margin-top: 5%;
-		right: 0;
+		right: 0;	
 		padding: 10px;
 		background-color: whitesmoke;
 		border-radius: 50%;
@@ -153,6 +153,7 @@
 		font-family: 'Ropa Sans', sans-serif;
 		font-weight: lighter;
 		color: white;
+		font-size: large;
 	}
 	.playlist-bar .playlist-carousel-view .playlist .playlist-meta span {
 		cursor: pointer;
