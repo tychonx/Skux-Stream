@@ -9,6 +9,7 @@
     "format": "prettier --write --plugin-search-dir=. ."
   },
   "devDependencies": {
+    "@supabase/gotrue-js": "^1.17.1",
     "@sveltejs/adapter-vercel": "^1.0.0-next.27",
     "@sveltejs/kit": "^1.0.0-next.156",
     "flickity": "^2.2.2",
@@ -19,10 +20,13 @@
   },
   "type": "module",
   "dependencies": {
+    "@cloudant/cloudant": "^4.5.0",
+    "@supabase/supabase-js": "^1.22.5",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "pg": "^8.7.1",
+    "sequelize": "^6.6.5",
     "unique-names-generator": "^4.6.0"
   }
 }

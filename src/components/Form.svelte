@@ -1,35 +1,48 @@
 <script>
-
+ export let activity;
 </script>
 
 <div class="form-div">
-    <center>
     <form>
-        <input type="email">
-        <input type="password">
-        <button type="submit">Login</button>
+        <input type="email" placeholder="Email"><br>
+        <input type="password" placeholder="Password"><br>
+        <button type="submit">{activity.toUpperCase()}</button>
     </form>        
-    </center>
-
 </div>
 
-<style>
-    .form-div{
-        position: absolute;
-        top: 40%;
-        left: 40%;
-    }
-    
+<style> 
+
     .form-div form{
-        display: flex;
-        flex-direction: column;
+        background-color: rgba(36, 36, 36, 0.575);
+        padding: 125px 35px 125px 15px;
+        position: absolute;
+        top: 50%;
+        border-radius: 15px;
+        left: 50%;
+        transform: translate(-50%, -50%);  
     }
 
     .form-div form input,button{
-        width: 100%;
-        padding-left:50px;
-        padding-right:50px;
-        padding-top: 15px;
-        margin-bottom:15%;
+        outline: none;
+        cursor: pointer;
+        width: 75%;
+        padding: 20px 50px 20px 50px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        border: none;
+        background-color: rgba(20, 20, 20, 0.548);
+    }
+
+
+    .form-div form input,button::placeholder{
+        font-size: large;
+        text-align: center;
+        color: white;
+    }
+
+    .form-div form button{
+        color: rgba(20, 20, 20, 0.548);
+        font-weight: bold;
+        background-color: rgb(56, 187, 56);
     }
 </style>

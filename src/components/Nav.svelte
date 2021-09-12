@@ -1,5 +1,6 @@
 <script>
 	export let segment;
+
 </script>
 
 <style>
@@ -29,7 +30,7 @@
 	<ul>
 		<li><a aria-current="{segment === undefined ? 'page' : undefined}" href=".">Home</a></li>
 		<li><a aria-current="{segment === 'about' ? 'page' : undefined}" href="about">Library</a></li>
-		<!-- svelte-ignore a11y-missing-attribute -->
+        <!-- svelte-ignore a11y-missing-attribute -->
 		<li><a >Search</a></li>
 	</ul>
 </nav>
